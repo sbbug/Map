@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+     <title></title>
+	 <meta charset = "utf-8">
+	 
+	 <script language="javascript" src = "JS/data.js"></script>
+	 <script language="javascript" src = "JS/drawMap.js"></script>
+	 <script language="javascript" src = "JS/funs.js"></script>
+	 <script language="javascript" src = "JS/jquery.js"></script>
+	 
+	 <link href="CSS/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	 <link href="CSS/style.css" rel="stylesheet" type="text/css" media="all" />
+	 <link href="CSS/admin.css" rel="stylesheet" type="text/css" media="all" />
+	 
+	
+	 
+   </head>
+   <body>
+      <div class = "container">
+	    
+		<div class = "item"><h1>欢迎进入地图管理系统界面</h1></div>
+		<div class = "item">
+		    <div class = "textStyle">1.修改两景点间的路径长度</div>
+			<span class = "fontStyle">FROM</span>
+			<select class = "selectStyle" id = "viewSpot1_1">
+			  <!--对于命名规则，不可以用viewSpot1.1等之类命名-->       
+			         
+			</select>
+			    <script>
+			     //动态加入下拉菜单viewSpot1内容
+				 
+				 var selectObj = document.getElementById("viewSpot1_1");
+				 
+				 selectObj.length = viewSpotCount+1;
+				 
+				 for(var i = 0 ; i< selectObj.length ; i++){
+				    selectObj.options[i] = new Option(viewSpots[i+1].name,viewSpots[i+1].id);
+				 }
+				 //alert(selectObj.length);
+				 </script>
+		   <span class = "fontStyle">TO</span>		
+           <select class = "selectStyle" id = "viewSpot1_2">
+			         
+			         
+			</select>
+			    <script>
+			     //动态加入下拉菜单viewSpot1内容
+				 
+				 var selectObj = document.getElementById("viewSpot1_2");
+				 
+				 selectObj.length = viewSpotCount+1;
+				 
+				 for(var i = 0 ; i< selectObj.length ; i++){
+				    selectObj.options[i] = new Option(viewSpots[i+1].name,viewSpots[i+1].id);
+				 }
+				 //alert(selectObj.length);
+				 </script>	
+              <span class = "fontStyle">DISTANCE</span>	
+              <input class = "inputStyleNum" type = "text" id = "dis1"/>
+			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;			  
+              <input class = "buttonStyle" id = "button_1" type = "button" value = "YES">
+<!--响应按钮事件-->
+              <script>
+                   
+				   $(function(){
+				          
+						  $("#button_1").click(function(){
+						      
+							  //alert("hello");
+							  
+							  
+							  var start = $("#viewSpot1_1  option:selected").val();
+							  
+							  var end = $("#viewSpot1_2  option:selected").val();
+							  
+							  var dis1 = $("#dis1").val();
+							  
+							  //alert(viewMar[start][end]);
+							  
+							  if(dis1 == ""){
+							    
+								alert("路径输入不得空");
+								
+							  }
+							  
+							  if(viewMar[start][end] == 10000){
+							     
+								 alert("该路径不存在");
+								 
+								 return false;
+								 
+							  }else if(viewMar[start][end] == 0){
+							     
+								 alert("该路径为自身路径");
+								 
+								 return false;
+								 
+							  }else{
+							  
+							     viewMar[start][end] = dis1;
+								 
+								 alert("修改成功");
+								 
+							  }
+							  
+							  
+						    })
+				   
+				   })
+
+              </script>			  
+		</div>
+		<div class = "item">
+		    <div class = "textStyle">2.添加地图路径</div>
+			<span class = "fontStyle">FROM</span>
+			<select class = "selectStyle" id = "viewSpot2_1">
+			         
+			         
+			</select>
+			    <script>
+			     //动态加入下拉菜单viewSpot1内容
+				 
+				 var selectObj = document.getElementById("viewSpot2_1");
+				 
+				 selectObj.length = viewSpotCount+1;
+				 
+				 for(var i = 0 ; i< selectObj.length ; i++){
+				    selectObj.options[i] = new Option(viewSpots[i+1].name,viewSpots[i+1].id);
+				 }
+				 //alert(selectObj.length);
+				 </script>
+		   <span class = "fontStyle">TO</span>		
+           <select class = "selectStyle" id = "viewSpot2_2">
+			         
+			         
+			</select>
+			    <script>
+			     //动态加入下拉菜单viewSpot1内容
+				 
+				 var selectObj = document.getElementById("viewSpot2_2");
+				 
+				 selectObj.length = viewSpotCount+1;
+				 
+				 for(var i = 0 ; i< selectObj.length ; i++){
+				    selectObj.options[i] = new Option(viewSpots[i+1].name,viewSpots[i+1].id);
+				 }
+				 //alert(selectObj.length);
+				 </script>	
+              <span class = "fontStyle">DISTANCE</span>	
+              <input class = "inputStyleNum" type = "text" id = "dis2"/>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;					  
+              <input class = "buttonStyle" id = "button_2" type = "button" value = "YES">
+<!--响应按钮事件-->
+              <script>
+                   
+				   $(function(){
+				          
+						  $("#button_2").click(function(){
+						      
+							  //alert("hello");
+							  
+							  
+							  var start = $("#viewSpot2_1  option:selected").val();
+							  
+							  var end = $("#viewSpot2_2  option:selected").val();
+							  
+							  var dis2 = $("#dis2").val();
+							  
+							  //alert(viewMar[start][end]);
+							  
+							  if(dis2 == ""){
+							    
+								alert("路径输入不得空");
+								
+							  }
+							  
+							  if(viewMar[start][end] == 10000){
+							     
+								 alert("该路径不存在");
+								 
+								 return false;
+								 
+							  }else if(viewMar[start][end] == 0){
+							     
+								 alert("该路径为自身路径");
+								 
+								 return false;
+								 
+							  }else{
+							  
+							     viewMar[start][end] = dis2;
+								 
+								 alert("修改成功");
+								 
+							  }
+							  
+							  
+						    })
+				   
+				   })
+
+              </script>			  
+		</div>
+		<div class = "item">
+		    <div class = "textStyle">3.删除景点之间路径</div>
+			<span class = "fontStyle">FROM</span>
+			<select class = "selectStyle" id = "viewSpot3_1">
+			         
+			         
+			</select>
+			    <script>
+			     //动态加入下拉菜单viewSpot1内容
+				 
+				 var selectObj = document.getElementById("viewSpot3_1");
+				 
+				 selectObj.length = viewSpotCount+1;
+				 
+				 for(var i = 0 ; i< selectObj.length ; i++){
+				    selectObj.options[i] = new Option(viewSpots[i+1].name,viewSpots[i+1].id);
+				 }
+				 //alert(selectObj.length);
+				 </script>
+		   <span class = "fontStyle">TO</span>		
+           <select class = "selectStyle" id = "viewSpot3_2">
+			         
+			         
+			</select>
+			    <script>
+			     //动态加入下拉菜单viewSpot1内容
+				 
+				 var selectObj = document.getElementById("viewSpot3_2");
+				 
+				 selectObj.length = viewSpotCount+1;
+				 
+				 for(var i = 0 ; i< selectObj.length ; i++){
+				    selectObj.options[i] = new Option(viewSpots[i+1].name,viewSpots[i+1].id);
+				 }
+				 //alert(selectObj.length);
+				 </script>	
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 			  
+              <input class = "buttonStyle" id = "button_3" type = "button" value = "YES">
+              <!--响应按钮事件-->
+			  <script>
+
+                 $(function(){
+				          
+						  $("#button_3").click(function(){
+						      
+							  //alert("hello");
+							  
+							  
+							  var start = $("#viewSpot3_1  option:selected").val();
+							  
+							  var end = $("#viewSpot3_2  option:selected").val();
+							  
+							  alert(start+end);
+							  
+							  if(viewMar[start][end] == 10000){
+							     
+								 alert("该路径不存在");
+								 
+								 return false;
+								 
+							  }else if(viewMar[start][end] == 0){
+							     
+								 alert("该路径为自身路径");
+								 
+								 return false;
+								 
+							  }else{
+							  
+							     viewMar[start][end] = 10000;
+								 
+								 alert("删除成功");
+							  }
+							  
+							  
+						    })
+				   
+				   })
+            </script>			  
+		</div>
+		
+		<div class = "item">
+		    <div class = "textStyle">4.删除景点</div>
+			<span class = "fontStyle">WHERE</span>		
+            <select class = "selectStyle selectStyle4" id = "viewSpot5.1">
+			         
+			         
+			</select>
+			    <script>
+			     //动态加入下拉菜单viewSpot1内容
+				 
+				 var selectObj = document.getElementById("viewSpot5.1");
+				 
+				 selectObj.length = viewSpotCount+1;
+				 
+				 for(var i = 0 ; i< selectObj.length ; i++){
+				    selectObj.options[i] = new Option(viewSpots[i+1].name,viewSpots[i+1].id);
+				 }
+				 //alert(selectObj.length);
+				 </script>	
+				 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                			 
+                
+				 <input class = "buttonStyle" id = "button_3" type = "button" value = "DELETE">
+		</div>
+		<div class =  "item">
+             <div class = "textStyle">5.添加景点</div>
+			          <span class = "fontStyle">ID</span>	 
+			          <input class = "selectStyle selectStyle5" type = "text" id = "viewId">
+					  <span class = "fontStyle">NAME</span>	 
+			          <input class = "selectStyle selectStyle5" type = "text" id = "viewName">
+					  <span class = "fontStyle">INFO</span>	 
+			          <input class = "selectStyle selectStyle5" type = "text" id = "viewInfo">
+					  <span class = "fontStyle">X 坐标</span>	 
+			          <input class = "selectStyle selectStyle5" type = "text" id = "viewX">
+					  <span class = "fontStyle">Y 坐标</span>	 
+			          <input class = "selectStyle selectStyle5" type = "text" id = "viewY">
+					  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					  <input class = "buttonStyle" id = "button_3" type = "button" value = "ADD">
+		</div>
+		<div class = "item">
+		     <div class = "textStyle">6.修改景点信息</div>
+			          <span class = "fontStyle">ID</span>
+					  <select class = "selectStyle selectStyleId" id = "viewSpot6.1">
+			          </select>
+                      <script>
+					     
+						  var selectObj = document.getElementById("viewSpot6.1");
+				 
+				          selectObj.length = viewSpotCount+1;
+				 
+				          for(var i = 0 ; i< selectObj.length ; i++){
+				            selectObj.options[i] = new Option(viewSpots[i+1].id,viewSpots[i+1].id);
+				          }
+					  
+					  </script>
+					  <span class = "fontStyle">NAME</span>	 
+			          <input class = "selectStyle selectStyleName" type = "text" id = "viewName">
+					  <span class = "fontStyle">INFO</span>	 
+			          <input class = "selectStyle selectStyleInfo" type = "text" id = "viewInfo">
+					   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					  <input class = "buttonStyle" id = "button_3" type = "button" value = "MODIFY">
+                        					  
+		
+		</div>
+		
+	    
+      </div>
+   </body>
+ 
+
+</html>

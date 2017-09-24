@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+     <title></title>
+	 <meta charset = "utf-8">
+	 
+	 <script language="javascript" src = "JS/data.js"></script>
+	 <script language="javascript" src = "JS/drawMap.js"></script>
+	 <script language="javascript" src = "JS/funs.js"></script>
+	 <script language="javascript" src = "JS/jquery.js"></script>
+	 
+	 <link href="CSS/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	 <link href="CSS/style.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+  <body>
+       <div ><h2>南京工业大学地图导航系统</h2></div>
+	   
+	   <div class = "mapLeft"> 
+	      <canvas id = "map" width = "1000" height = "800" style = "background:black" > </canvas>
+		  
+		 
+       </div>
+	    <!--相关功能-->
+	   <div class = "mapRight">
+            
+			<!--查询两个景点之间的最短路径-->
+			
+            <div class = "module1">  
+               <h3>1.查询两景点之间最短路径</h3>
+			   <h5>FROM</h5>
+               <select class="form-control" id = "viewSpot1">
+			   </select>
+			   <script>
+			     //动态加入下拉菜单viewSpot1内容
+				
+				 var selectObj = document.getElementById("viewSpot1");
+				 
+				 selectObj.length = viewSpotCount+1;
+				 
+				 for(var i = 0 ; i< selectObj.length ; i++){
+				    selectObj.options[i] = new Option(viewSpots[i+1].name,viewSpots[i+1].id);
+				 }
+				 //alert(selectObj.length);
+				 
+				 
+			   </script>
+			   <h5>TO</h5>
+			   <select class="form-control" id = "viewSpot2">
+			         
+			         
+			   </select>
+			   <script>
+			     //动态加入下拉菜单viewSpot1内容
+				 
+				 var selectObj = document.getElementById("viewSpot2");
+				 
+				 selectObj.length = viewSpotCount+1;
+				 
+				 for(var i = 0 ; i< selectObj.length ; i++){
+				    selectObj.options[i] = new Option(viewSpots[i+1].name,viewSpots[i+1].id);
+				 }
+				 //alert(selectObj.length);
+				 
+				 
+			   </script>
+			   </br>
+			   <button class="btn btn-large btn-block btn-primary" type="button" id = "submit1">查询</button>
+            </div>
+			
+			<!--查询两个景点之间的可寻路径-->
+			
+			<div class = "module2">  
+               <h3>2.查询两景点之间可寻路径</h3>
+			   <h5>FROM</h5>
+               <select class="form-control" id = "viewSpot3">
+			         
+			         
+			   </select>
+			    <script>
+			     //动态加入下拉菜单viewSpot1内容
+				 
+				 var selectObj = document.getElementById("viewSpot3");
+				 
+				 selectObj.length = viewSpotCount+1;
+				 
+				 for(var i = 0 ; i< selectObj.length ; i++){
+				    selectObj.options[i] = new Option(viewSpots[i+1].name,viewSpots[i+1].id);
+				 }
+				 //alert(selectObj.length);
+				 </script>
+			   <h5>TO</h5>
+			   <select class="form-control" id = "viewSpot4">
+			         
+			   </select>
+			    <script>
+			     //动态加入下拉菜单viewSpot1内容
+				 
+				 var selectObj = document.getElementById("viewSpot4");
+				 
+				 selectObj.length = viewSpotCount+1;
+				 
+				 for(var i = 0 ; i< selectObj.length ; i++){
+				    selectObj.options[i] = new Option(viewSpots[i+1].name,viewSpots[i+1].id);
+				 }
+				 //alert(selectObj.length);
+				 </script>
+			   </br>
+			   <button class="btn btn-large btn-block btn-primary" type="button" id = "submit2">查询</button>
+            </div>
+			
+			<!--进入地图管理-->
+			
+			<div class = "module3">  
+               <h3>3.进入地图管理</h3>
+			   </br>
+			   <button class="btn btn-large btn-block btn-primary" type="button" id = "submit3">点击进入</button>
+            </div>
+			<script>
+			     
+			     $(function(){
+				 
+				 //按钮绑定事件
+				 
+				    $("#submit1").click(function(){
+					  
+					  var viewSpot1FromVal = $("#viewSpot1  option:selected").val();
+					  //alert(viewSpot1FromVal);
+					  var viewSpot1ToVal = $("#viewSpot2  option:selected").val();
+					 // alert(viewSpot1ToVal);
+					  
+					  arr = searchShortestPath(viewSpot1FromVal,viewSpot1ToVal);
+					 
+					  //为什么有的可以找到最短路径，有的却找不到，到底什么原因拿
+					  //错误原因，下三角矩阵没有被初始化，可恨啊
+					  
+					  drawPath(cxt,arr,"red");
+					 
+					
+					})
+					
+				    $("#submit2").click(function(){
+					  
+					  var viewSpot2FromVal = $("#viewSpot3  option:selected").val();
+					 // alert(viewSpot2FromVal);
+					  var viewSpot2ToVal = $("#viewSpot4  option:selected").val();
+					 // alert(viewSpot2ToVal);
+					  
+					  allPath(cxt,viewSpot2FromVal,viewSpot2ToVal);
+					})	
+				   
+				    $("#submit3").click(function(){
+					    
+						window.location = "admin.html";
+						
+						//window.open("admin.html","","fullscreen = 1");
+					
+					})
+				 
+				 })
+			</script>
+			
+	   </div>
+
+       <script>
+	    
+		//获取的canvas里的当前坐标
+		
+		var x = 0 ;
+		
+		var y = 0;
+		
+	   //获取画笔
+		 
+		 var canvas = document.getElementById('map');
+		
+		 var cxt=document.getElementById('map').getContext('2d');
+		 
+		 //获取当前坐标信息
+		 
+		 canvas.addEventListener("click", function (evt) { 
+		 
+               var mousePos = getMousePos(canvas, evt); 
+			   //alert(mousePos.x +',' + mousePos.y);
+			   isOnRightLoca(mousePos.x,mousePos.y);
+               //alert(mousePos.x +',' + mousePos.y); 
+			   
+			   window.location = "view.html";
+			   
+         }, false);
+		 
+		drawN(cxt);		
+			
+		drawViewSpots(cxt); 
+		
+        drawViewPaths(cxt); 		
+		 
+		</script>	   
+  
+  
+  </body>
+
+</html>

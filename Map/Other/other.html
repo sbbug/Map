@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+     <title></title>
+	 <meta charset = "utf-8">
+	 <style>
+	    h2{
+		  
+		  text-align:center;
+		  
+		  color:red;
+		}
+	 </style>
+  </head>
+  <body>
+       <div ><h2>南京工业大学地图导航系统</h2></div>
+	   <canvas id = "map" width = "1000" height = "800" style = "background:black" </canvas>
+       
+
+       <script>
+	   
+	    //获取画笔
+		 var cxt=document.getElementById('map').getContext('2d');
+        ////////////////////////////////////// 
+		/* cxt.beginPath();
+		 
+		 cxt.moveTo(200,200);
+		 
+		 cxt.lineTo(200,100);
+		  
+		 cxt.lineWidth = 5; 		   
+		  
+		 cxt.strokeStyle = "blue";
+		 
+		 cxt.stroke();	
+
+         cxt.closePath();*/
+///////////////////////////////////////////////////////
+             cxt.beginPath();
+			 
+			 var x1 = 500;var y1 = 20;
+			 var x2 = 200;var y2 = 40;
+			 var x6 = 400;var y6 = 50;
+			 var x8 = 550;var y8 = 58;
+			 var x9 = 700;var y9 = 55;
+			 var x3 = 130;var y3 = 100;
+			 var x4 = 200;var y4 = 150;
+			 var x7 = 400;var y7 = 130;
+			 var x10 = 700;var y10 = 150;
+			 var x5 = 50;var y5 = 200;
+			 
+			 var x13 = 430;var y13 = 180;
+			 var x14 = 530;var y14 = 170;
+			 var x15 = 840;var y15 = 180;
+			 var x11 = 180;var y11 = 250;
+			 var x12 = 390;var y12 = 240;
+			 var x21 = 550;var y21 = 250;
+			 var x22 = 800;var y22 = 250;
+			 var x23 = 700;var y23 = 300;
+			 var x20 = 500;var y20 = 300 ;
+			 var x19 = 450;var y19 = 350;
+			 
+			 var x18 = 400;var y18 = 320;
+			 var x16 = 300;var y16 = 310;
+			 var x17 = 70;var y17 = 320;
+			 var x24 = 50;var y24 = 380;
+			 var x25 = 310;var y25 = 380;
+			 var x28 = 440;var y28 = 410;
+			 var x26 = 60;var y26 = 460;
+			 var x27 = 310;var y27 = 460;
+			 var x29 = 350;var y29 = 500;
+			 var x30 = 440; var y30 = 550;
+			 
+			 
+			   
+			 cxt.arc(x1,y1,6,0,2*Math.PI,true);
+             cxt.arc(x2,y2,6,0,2*Math.PI,true);			 
+             cxt.arc(x6,y6,6,0,2*Math.PI,true);			 
+            cxt.arc(x8,y8,6,0,2*Math.PI,true);			 
+             cxt.arc(x9,y9,6,0,2*Math.PI,true);			 
+             cxt.arc(x3,y3,6,0,2*Math.PI,true);			 
+             cxt.arc(x4,y4,6,0,2*Math.PI,true);			 
+             cxt.arc(x7,y7,6,0,2*Math.PI,true);			 
+             cxt.arc(x10,y10,6,0,2*Math.PI,true);			 
+             cxt.arc(x5,y5,6,0,2*Math.PI,true);
+			 
+			 cxt.arc(x13,y13,6,0,2*Math.PI,true);
+             cxt.arc(x14,y14,6,0,2*Math.PI,true);			 
+             cxt.arc(x15,y15,6,0,2*Math.PI,true);			 
+             cxt.arc(x11,y11,6,0,2*Math.PI,true);			 
+             cxt.arc(x12,y12,6,0,2*Math.PI,true);			 
+             cxt.arc(x21,y21,6,0,2*Math.PI,true);			 
+             cxt.arc(x22,y22,6,0,2*Math.PI,true);			 
+             cxt.arc(x23,y23,6,0,2*Math.PI,true);			 
+             cxt.arc(x20,y20,6,0,2*Math.PI,true);			 
+             cxt.arc(x19,y19,6,0,2*Math.PI,true);
+			 
+			 cxt.arc(x18,y18,6,0,2*Math.PI,true);
+             cxt.arc(x16,y16,6,0,2*Math.PI,true);			 
+             cxt.arc(x17,y17,6,0,2*Math.PI,true);			 
+             cxt.arc(x24,y24,6,0,2*Math.PI,true);			 
+             cxt.arc(x25,y25,6,0,2*Math.PI,true);			 
+             cxt.arc(x28,y28,6,0,2*Math.PI,true);			 
+             cxt.arc(x26,y26,6,0,2*Math.PI,true);			 
+             cxt.arc(x27,y27,6,0,2*Math.PI,true);			 
+             cxt.arc(x29,y29,6,0,2*Math.PI,true);			 
+            cxt.arc(x30,y30,6,0,2*Math.PI,true);
+
+             
+            			 
+			 
+             cxt.lineWidth = 3;
+
+             cxt.strokeStyle = "red";
+
+             cxt.stroke(); 			 
+			  
+			 cxt.closePath();
+		 
+		 /////////////////////////////////////
+		 /*
+		 cxt.beginPath();
+		 
+		 cxt.moveTo(200,200);
+		 
+		 cxt.lineTo(250,150);
+		 
+		 cxt.lineWidth = 5; 		   
+		  
+		 cxt.strokeStyle = "blue";
+
+         cxt.stroke();	
+
+         cxt.closePath();		 
+*/
+       </script>	   
+  
+  
+  </body>
+
+</html>

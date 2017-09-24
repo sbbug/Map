@@ -1,0 +1,89 @@
+ body{
+		    margin:0px;
+			padding:0px;
+			background-color:black;
+			
+		 }
+		 
+		 .container{
+		    width:99%;
+			margin-top:2%;
+			height:900px;
+			
+		}
+		 .container .item{
+		     width:99%;
+			 height:80px;
+			 margin-top:2%;
+			 text-align:center;
+		}
+		 .container .item4{
+		     width:99%;
+			 height:160px;
+			 border:2px solid red;
+			 margin-top:2%;
+			 text-align:center;
+		 }
+		 .container .item .textStyle{
+		     width:100%;
+			 height:30px;
+			 color:blue;
+			 font-size:20px;
+			 font-family:楷体;
+			 font-weight:bloder;
+		     text-align:left;
+		}
+	    .fontStyle{
+		    color:blue;
+			font-size:15px;
+			font-family:楷体;
+			font-weight:bloder;
+			text-align:left;
+		}
+		.selectStyle{
+		    height:40%;
+			border-radius: 4px;
+			font-size:15px;
+			color:blue;
+			
+		}
+		.selectStyle4{
+			width:17%;
+		}
+		.inputStyleNum{
+		    height:40%;
+			width:8%;
+			border-radius: 4px;
+			font-size:14px;
+		}
+		.inputStyleNum4{
+		    height:10%;
+			width:8%;
+			border-radius: 4px;
+			font-size:14px;
+		}
+		
+		.buttonStyle{
+		    width:8%;
+		    height:40%;
+		    background-color:#63B8FF;
+		    border-radius:4px;
+		    font-family:楷体;
+		    font-size:14px;
+		    font-weight:bold;	
+		    color:white;		
+		}
+		.selectStyle5{
+           width:10%;
+		}
+		.selectStyleId{
+			width:10%;
+		}
+		.selectStyleName{
+			width:12%;
+		} 
+		.selectStyleInfo{
+			width:25%;
+		}
+		
+		

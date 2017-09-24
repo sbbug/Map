@@ -1,0 +1,25 @@
+        body{
+		  margin:0px;
+		  padding:0px;
+		  background:black;
+		}
+	    h2{
+		  text-align:center;
+		  color:#CD00CD;
+		}
+		.mapLeft{
+		  float:left;
+		  width:1000px;
+		  height:800px;
+		}
+		.viewInfo{
+		   z-index:6;
+		   background:white;
+		}
+		.mapRight{
+		   
+		   float:left;
+		   width:330px;
+		   height:800px;
+		   background:black;
+		}
